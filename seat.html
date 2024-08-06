@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<title>1-1 자리 변경 시스템</title>
+
+<head>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .seat {
+            width: 50px;
+            height: 30px;
+            background-color: #f1f1f1;
+            margin: 10px 10px 0px 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .seat:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .seat.selected {
+            background-color: #cfffd9;
+        }
+
+        .seat.occupied {
+            background-color: #f1f1f1;
+        }
+
+        .reload_btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .blackboard {
+            background-color: #006b53;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="blackboard">칠판 / 교탁</div>
+    </div>
+</body>
+
+<script>
+    const _0x4d7a43 = _0x4e20; (function (_0x261e7c, _0x30c03a) { const _0x12a176 = _0x4e20, _0x3f5a8a = _0x261e7c(); while (!![]) { try { const _0x999a8c = parseInt(_0x12a176(0x116)) / 0x1 * (-parseInt(_0x12a176(0x102)) / 0x2) + -parseInt(_0x12a176(0xf6)) / 0x3 * (-parseInt(_0x12a176(0x103)) / 0x4) + -parseInt(_0x12a176(0x110)) / 0x5 * (parseInt(_0x12a176(0x105)) / 0x6) + -parseInt(_0x12a176(0x104)) / 0x7 + parseInt(_0x12a176(0xfd)) / 0x8 + -parseInt(_0x12a176(0xfa)) / 0x9 * (-parseInt(_0x12a176(0x111)) / 0xa) + -parseInt(_0x12a176(0x10c)) / 0xb; if (_0x999a8c === _0x30c03a) break; else _0x3f5a8a['push'](_0x3f5a8a['shift']()); } catch (_0x392547) { _0x3f5a8a['push'](_0x3f5a8a['shift']()); } } }(_0x5bbf, 0xccf57)); function _0x4e20(_0x76be33, _0x286e31) { const _0x5bbfc3 = _0x5bbf(); return _0x4e20 = function (_0x4e2067, _0x250e97) { _0x4e2067 = _0x4e2067 - 0xf5; let _0x1e965e = _0x5bbfc3[_0x4e2067]; return _0x1e965e; }, _0x4e20(_0x76be33, _0x286e31); } const random_seat = () => { const _0x20bc38 = _0x4e20, _0x2f488c = (_0x5c4564, _0x4ab60f) => { const _0x13f180 = _0x4e20, _0x240a18 = _0x5c4564[_0x13f180(0x106)], _0x5753fb = Math[_0x13f180(0xf7)](_0x240a18 / _0x4ab60f) + (Math[_0x13f180(0xf7)](_0x240a18 % _0x4ab60f) > 0x0 ? 0x1 : 0x0), _0x176180 = []; for (let _0x2c1725 = 0x0; _0x2c1725 <= _0x5753fb; ++_0x2c1725) { _0x176180[_0x13f180(0x112)](_0x5c4564[_0x13f180(0x109)](0x0, _0x4ab60f)); } return _0x176180; }, _0x375f1d = []; _0x375f1d[_0x20bc38(0x112)](0x15); while (_0x375f1d['length'] < 0x15) { const _0x422190 = Math['trunc'](Math[_0x20bc38(0x114)]() * 0x15 + 0x1); if (!_0x375f1d[_0x20bc38(0x108)](_0x422190)) _0x375f1d[_0x20bc38(0x112)](_0x422190); } const _0x5ed589 = _0x2f488c(_0x375f1d, 0x4); return _0x5ed589; }, container = document[_0x4d7a43(0x10f)](_0x4d7a43(0x100)); for (let i = 0x0; i < 0x6; i++) { const row = document[_0x4d7a43(0x10b)]('div'); row['classList']['add'](_0x4d7a43(0xfe)); for (let j = 0x0; j < 0x4; j++) { const seat = document[_0x4d7a43(0x10b)](_0x4d7a43(0xf5)); seat['classList'][_0x4d7a43(0x115)](_0x4d7a43(0x107)), row['appendChild'](seat); } container[_0x4d7a43(0x10a)](row); } const seats = document[_0x4d7a43(0xfb)](_0x4d7a43(0xff)); document['createElement'](_0x4d7a43(0xf9)); const reload_btn = document['createElement'](_0x4d7a43(0xf9)); reload_btn['textContent'] = 'Reload', reload_btn[_0x4d7a43(0x10d)][_0x4d7a43(0x115)](_0x4d7a43(0xf8)), reload_btn[_0x4d7a43(0x113)]('click', () => { location['reload'](); }), container[_0x4d7a43(0x10a)](reload_btn); const seat_info = random_seat(); function _0x5bbf() { const _0x177117 = ['length', 'seat', 'includes', 'splice', 'appendChild', 'createElement', '2512862DoGBVA', 'classList', 'click', 'querySelector', '964245YPMREb', '3212210RudvXz', 'push', 'addEventListener', 'random', 'add', '131293wMyCWi', 'trunc', 'div', '3162399vgApty', 'floor', 'reload_btn', 'button', '27MUOibr', 'querySelectorAll', 'toggle', '10218432FkUvTf', 'row', '.seat', '.container', 'forEach', '18OsWjkE', '4knhDix', '4618684uvEgHd', '12JrHmCD']; _0x5bbf = function () { return _0x177117; }; return _0x5bbf(); } let index = 0x0; seats['forEach'](_0x343cf7 => { const _0xbd58cd = _0x4d7a43; if (index < 0x14) _0x343cf7['textContent'] = seat_info[Math[_0xbd58cd(0x117)](index / 0x4)][index % 0x4]; else index == 0x17 && (_0x343cf7['textContent'] = seat_info[Math['trunc'](0x14 / 0x4)][0x14 % 0x4]); index++; }), seats[_0x4d7a43(0x101)](_0x8c6446 => { const _0x1c50a5 = _0x4d7a43; _0x8c6446['addEventListener'](_0x1c50a5(0x10e), () => { const _0x5ea3bc = _0x1c50a5; _0x8c6446[_0x5ea3bc(0x10d)][_0x5ea3bc(0xfc)]('selected'); }); });
+</script>
+
+</html>
