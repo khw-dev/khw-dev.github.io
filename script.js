@@ -419,8 +419,23 @@ document.addEventListener('DOMContentLoaded', () => {
     targetCrop = -15;
   };
 
+  // 모바일 터치 좌표 매핑
+  const handleTouch = (e) => {
+    resetIdleTimer();
+    if (e.touches.length > 0) {
+      const touch = e.touches[0];
+      handleMouseMove({
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+    }
+  };
+
   window.addEventListener('mousemove', handleMouseMove);
   document.addEventListener('mouseleave', handleMouseLeave);
+  window.addEventListener('touchstart', handleTouch, { passive: true });
+  window.addEventListener('touchmove', handleTouch, { passive: true });
+  window.addEventListener('touchend', handleMouseLeave);
 
   // LERP render
   const animateMascot = () => {
@@ -567,15 +582,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300); // 적당한 딜레이
   };
 
-  // svg hover 시 노출
+  // svg hover 시 노출 (데스크톱)
   svg?.addEventListener('mouseenter', showBubble);
 
-  // 컨테이너 영역 밖으로 나가면 숨김
+  // 컨테이너 영역 밖으로 나가면 숨김 (데스크톱)
   container?.addEventListener('mouseleave', hideBubble);
 
-  // 말풍선 자체에 hover 시 노출 상태 유지
+  // 말풍선 자체에 hover 시 노출 상태 유지 (데스크톱)
   speechBubble?.addEventListener('mouseenter', () => {
     clearTimeout(bubbleTimeout);
   });
   speechBubble?.addEventListener('mouseleave', hideBubble);
+
+  // 모바일 터치 대응
+  svg?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!speechBubble) return;
+    if (speechBubble.classList.contains('show')) {
+      hideBubble();
+    } else {
+      showBubble();
+    }
+  });
+
+  // 다른 영역 터치 시 말풍선 닫기
+  document.addEventListener('touchstart', (e) => {
+    if (speechBubble && speechBubble.classList.contains('show')) {
+      if (!speechBubble.contains(e.target) && !svg.contains(e.target)) {
+        hideBubble();
+      }
+    }
+  }, { passive: true });
 });
