@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="개발 준비 중인 포트폴리오 웹사이트입니다." />
+  <title>개발 준비 중</title>
+  <meta name="color-scheme" content="light dark" />
+  <script>
+    {
+      const colorScheme = localStorage.getItem('color-scheme');
+      if (colorScheme) {
+        document.documentElement.setAttribute('data-theme', colorScheme);
+        const meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) meta.content = colorScheme;
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main>
+    <div class="character-container">
+      <!-- 말풍선 -->
+      <div id="speech-bubble" class="speech-bubble"></div>
+
+      <!-- 캐릭터 -->
+      <svg class="blob-svg" viewBox="0 0 140 107" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- 눈 영역 지정 -->
+          <clipPath id="left-eye-clip">
+            <circle cx="62.5" cy="53.5" r="15.5" />
+          </clipPath>
+          <clipPath id="right-eye-clip">
+            <circle cx="102.5" cy="53.5" r="15.5" />
+          </clipPath>
+
+          <!-- 눈 찡그림 crop -->
+          <clipPath id="left-angry-slant">
+            <rect id="left-slant-path" x="30" y="48" width="65" height="100" transform="translate(0, -15)" />
+          </clipPath>
+          <clipPath id="right-angry-slant">
+            <rect id="right-slant-path" x="70" y="48" width="65" height="100" transform="translate(0, -15)" />
+          </clipPath>
+        </defs>
+
+        <!-- 왼쪽 귀 -->
+        <g id="left-ear" class="ear-group">
+          <path
+            d="M45.2483 2.52571C55.7238 0.791314 62.9185 13.3046 64.1504 22.0698L33.6538 27.119C32.825 17.5235 34.7728 4.26011 45.2483 2.52571Z" />
+        </g>
+
+        <!-- 오른쪽 귀 -->
+        <g id="right-ear" class="ear-group">
+          <path
+            d="M87.9087 2.52571C77.4332 0.791314 70.2385 13.3046 69.0066 22.0698L99.5031 27.119C100.332 17.5235 98.3842 4.26011 87.9087 2.52571Z" />
+        </g>
+
+        <!-- 고양이 몸체 -->
+        <path class="blob-body"
+          d="M140 63.2597C140 96.5799 108.66 107 70 107C31.3401 107 0 96.5799 0 63.2597C0 29.9395 31.3401 16 70 16C108.66 16 140 29.9395 140 63.2597Z" />
+
+        <!-- 왼쪽 눈 -->
+        <g class="eye-group" id="left-eye" clip-path="url(#left-eye-clip)">
+          <g id="left-eye-content" clip-path="url(#left-angry-slant)">
+            <circle class="eye-bg" cx="62.5" cy="53.5" r="15.5" />
+            <ellipse id="left-pupil" class="pupil" cx="62.5" cy="53.5" rx="6.5" ry="10" />
+          </g>
+        </g>
+
+        <!-- 오른쪽 눈 -->
+        <g class="eye-group" id="right-eye" clip-path="url(#right-eye-clip)">
+          <g id="right-eye-content" clip-path="url(#right-angry-slant)">
+            <circle class="eye-bg" cx="102.5" cy="53.5" r="15.5" />
+            <ellipse id="right-pupil" class="pupil" cx="102.5" cy="53.5" rx="6.5" ry="10" />
+          </g>
+        </g>
+      </svg>
+
+      <!-- text -->
+      <div class="status-text">&lt;개발 준비 중입니다/&gt;</div>
+    </div>
+  </main>
+
+  <!-- 언어 선택 컨테이너 -->
+  <div class="lang-selector-container floating-control-container">
+    <div class="lang-options-panel sliding-panel">
+      <button class="lang-opt-btn control-opt-btn" data-lang-val="ko" aria-label="한국어" title="한국어">KO</button>
+      <button class="lang-opt-btn control-opt-btn" data-lang-val="en" aria-label="영어" title="영어">EN</button>
+    </div>
+    <button id="lang-toggle" class="lang-toggle-btn control-toggle-btn" aria-label="언어 전환" title="언어 전환">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- 테마 선택 컨테이너 -->
+  <div class="theme-selector-container floating-control-container">
+    <div class="theme-options-panel sliding-panel">
+      <button class="theme-opt-btn control-opt-btn" data-theme-val="light" aria-label="라이트 테마" title="라이트 테마">
+        <span class="theme-dot light-dot"></span>
+      </button>
+      <button class="theme-opt-btn control-opt-btn" data-theme-val="ocean" aria-label="포레스트 테마" title="포레스트 테마">
+        <span class="theme-dot ocean-dot"></span>
+      </button>
+      <button class="theme-opt-btn control-opt-btn" data-theme-val="dark" aria-label="다크 테마" title="다크 테마">
+        <span class="theme-dot dark-dot"></span>
+      </button>
+      <button class="theme-opt-btn control-opt-btn" data-theme-val="black" aria-label="블랙 테마" title="블랙 테마">
+        <span class="theme-dot black-dot"></span>
+      </button>
+    </div>
+    <button id="theme-toggle" class="theme-toggle-btn control-toggle-btn" aria-label="테마 전환" title="테마 전환">
+      <svg class="moon-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M27.98 16.648C27.855 18.9629 27.0622 21.192 25.6974 23.0659C24.3326 24.9398 22.4542 26.3782 20.2894 27.2074C18.1245 28.0365 15.7658 28.2208 13.4984 27.738C11.231 27.2553 9.15193 26.126 7.51261 24.4869C5.87328 22.8477 4.74384 20.7688 4.26081 18.5015C3.77779 16.2341 3.96185 13.8754 4.79076 11.7104C5.61967 9.54545 7.05794 7.66692 8.93169 6.30192C10.8054 4.93691 13.0345 4.14388 15.3493 4.01867C15.8893 3.98934 16.172 4.632 15.8853 5.08934C14.9265 6.62341 14.516 8.43716 14.7207 10.2346C14.9254 12.032 15.7332 13.707 17.0124 14.9862C18.2916 16.2654 19.9666 17.0733 21.7641 17.278C23.5615 17.4827 25.3753 17.0721 26.9093 16.1133C27.368 15.8267 28.0093 16.108 27.98 16.648Z"
+          stroke="var(--toggle-moon-stroke)" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg class="sun-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.0001 21.3334C18.9456 21.3334 21.3334 18.9455 21.3334 16C21.3334 13.0545 18.9456 10.6667 16.0001 10.6667C13.0546 10.6667 10.6667 13.0545 10.6667 16C10.6667 18.9455 13.0546 21.3334 16.0001 21.3334Z"
+          stroke="#FFC848" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M16 4V5.33333M16 26.6667V28M4 16H5.33333M26.6667 16H28M24.4853 7.51467L23.5427 8.45733M8.45733 23.5427L7.51467 24.4853M7.51467 7.51467L8.45733 8.45733M23.5427 23.5427L24.4853 24.4853"
+          stroke="#FFC848" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
