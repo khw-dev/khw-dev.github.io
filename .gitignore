@@ -1,0 +1,30 @@
+# Dependencies and build output
+/node_modules/
+/.pnpm-store/
+/dist/
+/.vite/
+
+# Test output
+/coverage/
+/playwright-report/
+/test-results/
+
+# Local work artifacts
+/_workspace/
+
+# Environment variables (keep shareable examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+*.log
+*.log.*
+
+# OS and editor temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
